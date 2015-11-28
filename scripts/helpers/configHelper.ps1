@@ -13,15 +13,14 @@ filter file:{
         'directory'{
             if(Test-Path $path){
                 if((Get-Item($path)).PSIsContainer){
-                Write-Host "$path is present directory." -ForegroundColor Green
-            } else {
-                Write-Host "$path is present,but not directory,so it can't be made." -ForegroundColor Red
-            }
+                    Write-Host "$path is present directory." -ForegroundColor Green
+                } else {
+                    Write-Host "$path is present,but not directory,so it can't be made." -ForegroundColor Red
+                }
+                return {} #do nothing
 
-            return {} #do nothing
             } else {
                 Write-Host "$path is not present directory, so it will be made." -ForegroundColor Yellow
-
                 return (Invoke-Expression "{New-Item $path -ItemType Directory}")
             }
         }
@@ -54,7 +53,7 @@ filter file:{
 
                     } else {
                         Write-Host "$path is present directory,but no empty,so it can't be deleted." -ForegroundColor Red
-                        return {}
+                        return {} #do nothing
                     }
 
                 } else {
