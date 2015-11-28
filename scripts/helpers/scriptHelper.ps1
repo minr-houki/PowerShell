@@ -1,4 +1,4 @@
-filter call{
+filter invoke{
   Invoke-Expression("&{$_} $args")
 }
 

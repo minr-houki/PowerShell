@@ -6,16 +6,14 @@
 param(
   $self = $script:myInvocation.MyCommand.path
 )
+$parent = split-path $self -parent
+$targetDir = (join-path $parent '..\..\scripts\helpers')
 
 # !CAUTION! This function can't run when loaded as module.
 filter include{
   New-Module (Invoke-Expression("{$_}"))
 }
-
-$parent = split-path $self -parent
 Set-Alias out Out-Null
-
-$targetDir = (join-path $parent '..\..\scripts\helpers')
 
 $script = [System.IO.File]::ReadAllText((join-path $targetDir 'testHelper.ps1'))
 New-Module (Invoke-Expression("{$script}")) | out
@@ -100,14 +98,14 @@ if(read_file $tempFile | should_not_be 'Hello,‡ŠWorld‚³‚ñ'){
 }
 
 ## CASE3
-echo 'CASE3: call' ; $total_n++
+echo 'CASE3: invoke' ; $total_n++
 $script = @'
 param($name)
 echo "Hello,$name!"
 '@
 [System.IO.File]::WriteAllText($tempScript,$script)
 
-if(read_file $tempScript | call 'GitHub' | should_be 'Hello,GitHub!'){
+if(read_file $tempScript | invoke 'GitHub' | should_be 'Hello,GitHub!'){
   $passed_n++
 }
 echo ''

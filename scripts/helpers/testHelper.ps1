@@ -3,13 +3,13 @@ function should_be($expected){
   $actual = "$input"
 
   if($actual -eq "$expected"){
-    Write-Host ('TRUE'                     ) -ForegroundColor Green
+    Write-Host ('TRUE'                     ) -BackgroundColor DarkGreen
     $true
 
   } else {
-    Write-Host ('FALSE'                    ) -ForegroundColor Red
-    Write-Host ('  [expected] ' + $expected) -ForegroundColor Red
-    Write-Host ('  [actual  ] ' + $actual  ) -ForegroundColor Red
+    Write-Host ('FALSE'                    ) -BackgroundColor DarkRed
+    Write-Host ('  [expected] ' + $expected) -BackgroundColor DarkRed
+    Write-Host ('  [actual  ] ' + $actual  ) -BackgroundColor DarkRed
     $false
   }
 }
@@ -18,13 +18,13 @@ function should_not_be($expected){
   $actual = "$input"
 
   if($actual -ne "$expected"){
-    Write-Host ('TRUE'                     ) -ForegroundColor Green
-    Write-Host ('  [expected] ' + $expected) -ForegroundColor Green
-    Write-Host ('  [actual  ] ' + $actual  ) -ForegroundColor Green
+    Write-Host ('TRUE'                     ) -BackgroundColor DarkGreen
+    Write-Host ('  [expected] ' + $expected) -BackgroundColor DarkGreen
+    Write-Host ('  [actual  ] ' + $actual  ) -BackgroundColor DarkGreen
     $true
 
   } else {
-    Write-Host ('FALSE'                    ) -ForegroundColor Red
+    Write-Host ('FALSE'                    ) -BackgroundColor DarkRed
     $false
   }
 }

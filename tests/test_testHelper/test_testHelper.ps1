@@ -6,11 +6,11 @@
 param(
   $self = $script:myInvocation.MyCommand.path
 )
-
 $parent = split-path $self -parent
+$targetDir = (join-path $parent '..\..\scripts\helpers')
+
 Set-Alias out Out-Null
 
-$targetDir = (join-path $parent '..\..\scripts\helpers')
 $script = [System.IO.File]::ReadAllText((join-path $targetDir 'testHelper.ps1'))
 New-Module (Invoke-Expression("{$script}")) | out
 #endregion initialize
