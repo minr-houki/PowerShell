@@ -17,56 +17,104 @@ $passed_n = 0
 $failed_n = 0
 
 ## CASE1
-echo 'CASE1: same strings'
-if('aaa' | shouldbe 'aaa'){
+echo 'CASE1-1: same strings(should_be)'
+if('aaa' | should_be 'aaa'){
   echo '-> passed.' ; $passed_n++
 } else {
   echo '-> failed.' ; $failed_n++
 }
 echo ''
 
-## CASE2
-echo 'CASE2: different strings'
-if('aaa' | shouldbe 'aab'){
+echo 'CASE1-2: same strings(should_not_be)'
+if('aaa' | should_not_be 'aaa'){
   echo '-> failed.' ; $failed_n++
 } else {
   echo '-> passed.' ; $passed_n++
+}
+echo ''
+
+## CASE2
+echo 'CASE2-1: different strings(should_be)'
+if('aaa' | should_be 'aab'){
+  echo '-> failed.' ; $failed_n++
+} else {
+  echo '-> passed.' ; $passed_n++
+}
+echo ''
+
+echo 'CASE2-2: different strings(should_not_be)'
+if('aaa' | should_not_be 'aab'){
+  echo '-> passed.' ; $passed_n++
+} else {
+  echo '-> failed.' ; $failed_n++
 }
 echo ''
 
 ## CASE3
-echo 'CASE3: same script blocks'
-if({'aaa'} | shouldbe {'aaa'}){
+echo 'CASE3-1: same script blocks(should_be)'
+if({'aaa'} | should_be {'aaa'}){
   echo '-> passed.' ; $passed_n++
 } else {
   echo '-> failed.' ; $failed_n++
 }
 echo ''
 
-## CASE4
-echo 'CASE4: different script blocks'
-if({'aaa'} | shouldbe {'aab'}){
+echo 'CASE3-2: same script blocks(should_not_be)'
+if({'aaa'} | should_not_be {'aaa'}){
   echo '-> failed.' ; $failed_n++
 } else {
   echo '-> passed.' ; $passed_n++
+}
+echo ''
+
+## CASE4
+echo 'CASE4-1: different script blocks(should_be)'
+if({'aaa'} | should_be {'aab'}){
+  echo '-> failed.' ; $failed_n++
+} else {
+  echo '-> passed.' ; $passed_n++
+}
+echo ''
+
+echo 'CASE4-2: different script blocks(should_not_be)'
+if({'aaa'} | should_not_be {'aab'}){
+  echo '-> passed.' ; $passed_n++
+} else {
+  echo '-> failed.' ; $failed_n++
 }
 echo ''
 
 ## CASE5
-echo 'CASE5: string and script block'
-if('aaa' | shouldbe {'aaa'}){
+echo 'CASE5-1: string and script block(should_be)'
+if('aaa' | should_be {'aaa'}){
   echo '-> failed.' ; $failed_n++
 } else {
   echo '-> passed.' ; $passed_n++
 }
 echo ''
 
+echo 'CASE5-2: string and script block(should_not_be)'
+if('aaa' | should_not_be {'aaa'}){
+  echo '-> passed.' ; $passed_n++
+} else {
+  echo '-> failed.' ; $failed_n++
+}
+echo ''
+
 ## CASE6
-echo 'CASE6: script block and string'
-if({'aaa'} | shouldbe 'aaa'){
+echo 'CASE6-1: script block and string(should_be)'
+if({'aaa'} | should_be 'aaa'){
   echo '-> failed.' ; $failed_n++
 } else {
   echo '-> passed.' ; $passed_n++
+}
+echo ''
+
+echo 'CASE6-2: script block and string(should_not_be)'
+if({'aaa'} | should_not_be 'aaa'){
+  echo '-> passed.' ; $passed_n++
+} else {
+  echo '-> failed.' ; $failed_n++
 }
 echo ''
 
