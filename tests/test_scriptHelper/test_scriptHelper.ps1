@@ -113,7 +113,7 @@ if(read_file $tempScript | call 'GitHub' | should_be 'Hello,GitHub!'){
 echo ''
 
 ## CASE4
-echo 'CASE3: include' ; $total_n++
+echo 'CASE4: include' ; $total_n++
 $script = @'
 function test_include{
   param($name)
@@ -128,14 +128,6 @@ if(test_include 'GitHub' | should_be 'Hello,GitHub!'){
 echo ''
 
 ## SUMMARY
-echo 'SUMMARY:'
-echo ('passed = ' + $passed_n.ToString())
-echo ('failed = ' + ($total_n - $passed_n).ToString())
-echo ('total  = ' + $total_n.ToString())
-if(($total_n - $passed_n) -eq 0){
-  Write-Host '-> This test was passed.' -BackgroundColor DarkGreen
-} else {
-  Write-Host '-> This test was failed.' -BackgroundColor DarkRed
-}
+write_summary -passedCount $passed_n -totalCount $total_n
 
 #endregion test

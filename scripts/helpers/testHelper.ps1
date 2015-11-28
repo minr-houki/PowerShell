@@ -28,3 +28,17 @@ function should_not_be($expected){
     $false
   }
 }
+
+function write_summary($passedCount,$totalCount){
+  $failedCount = $totalCount - $passedCount
+
+  echo 'SUMMARY:'
+  echo ('passed = ' + $passedCount.ToString())
+  echo ('failed = ' + $failedCount.ToString())
+  echo ('total  = ' + $totalCount.ToString())
+  if($failedCount -eq 0){
+    Write-Host '-> This test was passed.' -BackgroundColor DarkGreen
+  } else {
+    Write-Host '-> This test was failed.' -BackgroundColor DarkRed
+  }
+}
